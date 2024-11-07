@@ -3,18 +3,26 @@
 <head>
     <title>Quadratics Worksheet Generator</title>
 
+    <style>
+        /* Text Sizes */
+        h1{text-align: center; font-size: 3vw;} /* makes it addaptive to 3% of view field */
+        h2{font-size: 1.6vw;} /* makes it addaptive to 1.6% of view field */
+        p{font-size: 1.2vw;} /* makes it addaptive to 1.2% of view field */
+    </style>
+
     <!--TeX library-->
     <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
     </script>
     <script type="text/javascript"
         src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
 
-<script>
+    <script>
     function generateQuadraticEquation() {
-      let equations = [];
-      for (let i = 0; i < 10; i++) {
+        let equations = [];
+        let solutions = [];
+        for (let i = 0; i < 10; i++) {
             // Generate two random non zero different integer roots from -10 to 10 
             let root1 = 1;
             let root2 = 1;
@@ -50,11 +58,11 @@
             let b2 = b - b1
             
             
-           // Variate quadratic equations by types
-           let  equation = [];
-           let counter = i + 1;
-           let eq_type = Math.floor(Math.random() * 3); // Generates random integer from 0 to 2
-           switch (eq_type) {
+            // Variate quadratic equations by types
+            let  equation = [];
+            let counter = i + 1;
+            let eq_type = Math.floor(Math.random() * 3); // Generates random integer from 0 to 2
+            switch (eq_type) {
             case 0:
                 equation = `$$${counter})x(${a1}x + ${b1}) = -x(${a2}x + ${b2}) - ${c}$$`; //a little rearangement
                 break;
@@ -67,30 +75,38 @@
             default:
                 equation = `$$${0} ${a}x^2 + ${b}x + ${c} = 0$$`; //basic quadratic equation
                 break;
-           }
-           
-           
-           //basic quadratic equation: `$$${a}x^2 + ${b}x + ${c} = 0$$`;
-           //a little rearangement: `$$x(${a1}x + ${b1}) = -x(${a2}x + ${b2}) - ${c}$$`;
-           //some common denominator work required = `$$x + \\frac{${a2}x^2 +${c}}{${a1}x+${b1}} = -\\frac{${b2}x}{${a1}x+${b1}}$$`
-           //some common denominator work required other kind = `$$x + \\frac{${a2}x^2}{${a1}x+${b1}} = \\frac{-${c}}{${a1}x+${b1}}-\\frac{${b2}x}{${a1}x+${b1}}$$` 
-           equations.push(equation);
-           document.getElementById('equations').innerHTML = equations.join();
+            }
+
+            let roots = [];
+            roots = `$$(${counter})(${root1},${root2})$$`;
             
-           
-      }    
-      let example_equation = [];
-      let counter = 8;
-      let a1 = 3;
-      let a2 = 4;
-      let b1 = 5;
-      let b2 = 6;
-      let c = 7;
-      document.getElementById('example_equation').innerHTML = `$$${counter})x(${a1}x + ${b1}) = -x(${a2}x + ${b2}) - ${c}$$`;
-      
-   }
-    
-  </script>
+            
+            //basic quadratic equation: `$$${a}x^2 + ${b}x + ${c} = 0$$`;
+            //a little rearangement: `$$x(${a1}x + ${b1}) = -x(${a2}x + ${b2}) - ${c}$$`;
+            //some common denominator work required = `$$x + \\frac{${a2}x^2 +${c}}{${a1}x+${b1}} = -\\frac{${b2}x}{${a1}x+${b1}}$$`
+            //some common denominator work required other kind = `$$x + \\frac{${a2}x^2}{${a1}x+${b1}} = \\frac{-${c}}{${a1}x+${b1}}-\\frac{${b2}x}{${a1}x+${b1}}$$` 
+            equations.push(equation);
+            document.getElementById('equations').innerHTML = equations.join();
+            
+            solutions.push(roots);
+            document.getElementById('solutions').innerHTML = solutions.join();
+            
+            
+            
+            
+        }    
+        let example_equation = [];
+        let counter = 8;
+        let a1 = 3;
+        let a2 = 4;
+        let b1 = 5;
+        let b2 = 6;
+        let c = 7;
+        document.getElementById('example_equation').innerHTML = `$$${counter})x(${a1}x + ${b1}) = -x(${a2}x + ${b2}) - ${c}$$`;
+        
+    }
+
+    </script>
 
 </head>
 
@@ -98,9 +114,12 @@
     <!-- Worksheet Parameter-->
 
    
-
+    <p>Here the equations to solve:</p>
     <div id="equations"></div>
     <p>To get the solution use the formula: $$ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$</p>
+
+    <p>The answers are:</p>
+    <div id="solutions"></div>
    
     <script>
         generateQuadraticEquation();
