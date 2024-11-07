@@ -1,11 +1,40 @@
+<!DOCTYPE html>
 <html>
 <head>
 
 <!--Style Formating-->
 <style>
-h1{text-align: center; font-size: 48px;} 
-h2{font-size: 36px;}
-p{font-size: 32px;}
+    /* Text Sizes */
+    h1{text-align: center; font-size: 3vw;} /* makes it addaptive to 3% of view field */
+    h2{font-size: 1.6vw;} /* makes it addaptive to 1.6% of view field */
+    p{font-size: 1.5vw;} /* makes it addaptive to 1.5% of view field */
+
+    /*Figures formatting*/
+    .figure-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px; /* gap between images */
+            flex-wrap: wrap; /* Wrap images to next line */
+            margin: 0 auto;
+        }
+
+        figure {
+            margin: 0; /* Remove default margin of figure */
+            text-align: center; /* Optional: center the text below the image */
+        }
+
+        img {
+            width: 400px; /* Set a fixed width for images */
+            height: 400px; /* Set a fixed height for images */
+            display: block; /* Ensures images don't have extra space below them */
+        }
+        figure:first-child {
+            margin-left: 100px; /* Adjust as needed */
+        }
+        figure:last-child {
+            margin-right: 100px; /* Adjust as needed */
+        }
+
 </style>
 
 <title>Quadratic Equations</title>
@@ -28,12 +57,25 @@ p{font-size: 32px;}
 <p>And represents a <a href="https://en.wikipedia.org/wiki/Parabola" target="_blank"><b>parabola</b></a></p>
 
 <p>It has two solitions called <b>ROOTS</b></p>
-<img src="/Photos/2root parabola.jpg" alt="Image of parabola with 2 real roots" width="400" height="400" style="margin: 0 auto; display: block;">
-<p>If parabola crosses the "Y" axis - it has 2 real roots - like in the picture above</p>
-<p>If parabola doesn't cross the "Y" axis - it has no real roots - like in the picture below</p>
-<img src="/Photos/no root parabola.jpg" alt="Image of parabola with no real roots" width="400" height="400" style="margin: 0 auto; display: block;">
-<p>or it can have only one solution like here:</p>
-<img src="/Photos/one solution parabola.jpg" alt="Image of parabola with 1 real root" width="400" height="400" style="margin: 0 auto; display: block;">
+<!-- Illustrations -->
+<div class="figure-container">
+    <figure>
+        <img src="/Photos/2root parabola.jpg" alt="Image of parabola with 2 real roots">
+        <figcaption>Fig. 1 - Parabola with 2 real roots.</figcaption>
+    </figure>
+    <figure>
+        <img src="/Photos/no root parabola.jpg" alt="Image of parabola with no real roots">
+        <figcaption>Fig. 2 - Parabola with no real roots.</figcaption>
+    </figure>
+    <figure>
+        <img src="/Photos/one solution parabola.jpg" alt="Image of parabola with 1 real root">
+        <figcaption>Fig. 3 - Parabola with one real root.</figcaption>
+    </figure>
+</div>
+<p>If parabola crosses the "Y" axis - it has 2 real roots - like in figure 1. If parabola doesn't cross the "Y" axis - it has no real roots - like in figure 2,
+     or it can have only one solution like in figure 3. </p>
+
+
 
 <p>To get the solution use the formula: \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]</p>
 <p> <i>Note 1:</i> if \( b^2 - 4ac < 0\) - there is no <b>real</b> solution</p>
