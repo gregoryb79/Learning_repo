@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quadratics Worksheet Generator</title>
+
+    <!--TeX library-->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript"
+        src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+</head>
+
+<body>
+   <!-- 
+    <p id="equation"></p>
+    <p id="hard_equation_type1"></p>
+    <p id="hard_equation_type2"></p>
+    <p id="hard_equation_type3"></p>
+    <p id="hard_equation"></p>
+
+    -->
+    <div id="hard_equations"></div>
+    
+    <script>
+        function generateQuadraticEquation() {
+          // Generate two random integer roots from -10 to 10        
+          const root1 = Math.floor(Math.random() * 10) - 20;
+          const root2 = Math.floor(Math.random() * 10) - 20;
+    
+          // Generate a random integer for 'a' (excluding 0 and 1)
+          const a = Math.floor(Math.random() * 10) + 2;
+    
+          // Calculate the coefficients 'b' and 'c'
+          const b = -a * (root1 + root2);
+          const c = a * root1 * root2;
+    
+          //Generate a1 and a2
+          const a1 = a - Math.floor(a * Math.random())
+          const a2 = a - a1
+          //Generate b1 and b2
+          const b1 = b - Math.floor(b * Math.random())
+          const b2 = b - b1
+          
+          
+          // Print the quadratic equation
+          //document.getElementById("equation").innerHTML = `$$${a}x^2 + ${b}x + ${c} = 0$$`;
+          //document.getElementById("hard_equation_type1").innerHTML = `$$x(${a1}x + ${b1}) = -x(${a2}x + ${b2}) - ${c}$$`;
+          //document.getElementById("hard_equation_type2").innerHTML = `$$x + \\frac{${a2}x^2}{${a1}x+${b1}} = \\frac{-${c}}{${a1}x+${b1}}-\\frac{${b2}x}{${a1}x+${b1}}$$`;
+          //document.getElementById("hard_equation_type3").innerHTML = `$$x + \\frac{${a2}x^2 +${c}}{${a1}x+${b1}} = -\\frac{${b2}x}{${a1}x+${b1}}$$`;
+
+          
+         
+         //   const equation = `$$x(${a1}x + ${b1}) = -x(${a2}x + ${b2}) - ${c}$$`;
+         
+            const equation = `$$x + \\frac{${a2}x^2}{${a1}x+${b1}} = \\frac{-${c}}{${a1}x+${b1}}-\\frac{${b2}x}{${a1}x+${b1}}$$`;
+         
+         //const equation = `$$x + \\frac{${a2}x^2 +${c}}{${a1}x+${b1}} = -\\frac{${b2}x}{${a1}x+${b1}}$$`;
+         
+         
+          const equationElement = document.createElement('p');
+          equationElement.textContent = equation;
+          document.getElementById('hard_equations').appendChild(equationElement);
+          
+          //if(HardnessChoice > 0.66){
+          //  document.getElementById("hard_equation").innerHTML = `$$x(${a1}x + ${b1}) = -x(${a2}x + ${b2}) - ${c}$$`;
+          //} else if (HardnessChoice > 0.33) {
+          //  document.getElementById("hard_equation").innerHTML = `$$x + \\frac{${a2}x^2}{${a1}x+${b1}} = \\frac{-${c}}{${a1}x+${b1}}-\\frac{${b2}x}{${a1}x+${b1}}$$`;
+          //} else {
+          //  document.getElementById("hard_equation").innerHTML = `$$x + \\frac{${a2}x^2 +${c}}{${a1}x+${b1}} = -\\frac{${b2}x}{${a1}x+${b1}}$$`;
+          //}
+        }
+        for (let i = 0; i < 10; i++) {
+            generateQuadraticEquation();
+        }
+        
+      </script>
+
+    
+
+    <!--<p>To get the solution use the formula: $$ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$</p>-->
+  </body>
+  </html>
