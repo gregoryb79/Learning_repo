@@ -26,16 +26,16 @@
             // Generate two random non zero different integer roots from -10 to 10 
             let root1 = 1;
             let root2 = 1;
-            while (root1 == root2 || root1 == 0 || root2 == 0) {
-                root1 = Math.floor(Math.random() * 10) - 20;
-                root2 = Math.floor(Math.random() * 10) - 20;
+           while ((root1 == root2) || (root1 == 0) || (root2 == 0)) {
+                root1 = Math.floor(Math.random()*21)-10;
+                root2 = Math.floor(Math.random()*21)-10;
             }
                     
         
             // Generate a random integer for 'a' (excluding 0 and 1)
             let a = 1;
-            while (a == 1 || a == 0) {
-                a = Math.floor(Math.random() * 10) - 20;  
+            while ((a == 1) || (a == 0)) {
+                a = Math.floor(Math.random() * 21) - 10;  
             }
             
         
@@ -44,22 +44,16 @@
             let c = a * root1 * root2;
         
             //Generate a1 and a2
-            let a1 = 0;
-            while (a1 == 0) {
-                a1 = a - Math.floor(a * Math.random())
-            }          
+            let a1 = a - Math.floor(a * Math.random())      
             let a2 = a - a1
             
             //Generate b1 and b2
-            let b1 = 0;
-            while (b1 == 0) {
-                b1 = b - Math.floor(b * Math.random())
-            }          
+            let b1 = b - Math.floor(b * Math.random())      
             let b2 = b - b1
             
             
             // Variate quadratic equations by types
-            let  equation = [];
+            let equation =  [];
             let counter = i + 1;
             let eq_type = Math.floor(Math.random() * 3); // Generates random integer from 0 to 2
             switch (eq_type) {
@@ -85,25 +79,13 @@
             //a little rearangement: `$$x(${a1}x + ${b1}) = -x(${a2}x + ${b2}) - ${c}$$`;
             //some common denominator work required = `$$x + \\frac{${a2}x^2 +${c}}{${a1}x+${b1}} = -\\frac{${b2}x}{${a1}x+${b1}}$$`
             //some common denominator work required other kind = `$$x + \\frac{${a2}x^2}{${a1}x+${b1}} = \\frac{-${c}}{${a1}x+${b1}}-\\frac{${b2}x}{${a1}x+${b1}}$$` 
-            equations.push(equation);
-            document.getElementById('equations').innerHTML = equations.join();
-            
+            equations.push(equation);                   
             solutions.push(roots);
-            document.getElementById('solutions').innerHTML = solutions.join();
-            
-            
             
             
         }    
-        let example_equation = [];
-        let counter = 8;
-        let a1 = 3;
-        let a2 = 4;
-        let b1 = 5;
-        let b2 = 6;
-        let c = 7;
-        document.getElementById('example_equation').innerHTML = `$$${counter})x(${a1}x + ${b1}) = -x(${a2}x + ${b2}) - ${c}$$`;
-        
+        document.getElementById('equations').innerHTML = equations.join();
+        document.getElementById('solutions').innerHTML = solutions.join();
     }
 
     </script>
@@ -111,9 +93,7 @@
 </head>
 
 <body>
-    <!-- Worksheet Parameter-->
-
-   
+       
     <p>Here the equations to solve:</p>
     <div id="equations"></div>
     <p>To get the solution use the formula: $$ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$</p>
